@@ -24,6 +24,33 @@ void	replace_pattern(std::string& str,
 }
 
 
+int main(int argc, char *argv[])
+{
+	
+	if (argc != 4)
+	{
+		std::cerr << "Incorrect number of args" << std::endl;
+		return 1;
+	}
+	std::string input_filename = argv[1];
+    std::string output_filename = input_filename + ".replace";
+	std::string to_replace = argv[2];
+	std::string new_token = argv[3];
+
+	std::string current_line;
+	std::ifstream in_file(input_filename);
+	std::ofstream out_file(output_filename);
+
+	while (getline(in_file, current_line))
+	{
+		replace_pattern(current_line, to_replace , new_token);
+		out_file << current_line << std::endl;
+	}
+	return 0;	
+};
+
+
+
 
 
 
