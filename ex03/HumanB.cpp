@@ -12,11 +12,11 @@ HumanB::HumanB(std::string name)
 
 void	HumanB::attack() const
 {
-	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
 };
 
 void	HumanB::setWeapon(Weapon& new_weapon)
 {
-	weapon = new_weapon;
+	weapon = &new_weapon;
 }
 
