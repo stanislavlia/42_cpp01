@@ -38,9 +38,23 @@ int main(int argc, char *argv[])
 	std::string new_token = argv[3];
 
 	std::string current_line;
-	std::ifstream in_file(input_filename);
-	std::ofstream out_file(output_filename);
 
+	std::ifstream in_file(input_filename);
+
+	//Handling file permissions
+    if (!in_file.is_open())
+    {
+        std::cerr << "Error: Cannot open input file for reading" << std::endl;
+        return 1;
+    }
+	std::ofstream out_file(output_filename);
+    if (!out_file.is_open())
+    {
+        std::cerr << "Error: Cannot open output file for writing" << std::endl;
+        return 1;
+    }
+
+	//Replace logic
 	while (getline(in_file, current_line))
 	{
 		replace_pattern(current_line, to_replace , new_token);
@@ -53,7 +67,7 @@ int main(int argc, char *argv[])
 
 
 
-
+// //Test function
 
 // void test_replace_pattern(const std::string& test_case,
 // 							 std::string input,
